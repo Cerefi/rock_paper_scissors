@@ -1,39 +1,39 @@
-let RPS = ['rock', 'paper', 'scissors'];
-let playerChoice = '';
-let computerChoice;
+const RPS = ['rock', 'paper', 'scissors'];
+const btnRock = document.querySelector('#btnRock');
+const btnPaper = document.querySelector('#btnPaper');
+const btnScissors = document.querySelector('#btnScissors')
+const divRoundResult = document.querySelector('#divResult');
+const divGameResult = document.querySelector('#divGameResult');
+const divPlayerRecord = document.querySelector('#divPlayerRecord');
+const divComputerRecord = document.querySelector('#divComputerRecord');
+
+let computerChoice = '';
 let playerRecord = 0;
 let computerRecord = 0;
+let resultRound = '';
 
 game ();
 
-
 function game()
-{    
-    while (playerRecord !== 5 && computerRecord !== 5)
-    {
-        while (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors')
-        {
-            playerChoice = prompt('Rock, Paper or Scissors? ');
-            playerChoice = playerChoice.toLowerCase();
-        }
-        computerChoice = RPS[getComputerChoice()];
-        alert(round(playerChoice, computerChoice));
-        playerChoice = '';
-        console.log('Player: ' + playerRecord + ' Computer: ' + computerRecord);
-    }
+{
 
-    if (playerRecord > computerRecord)
-    {
-        alert('Game Done! YOU WIN!');
+    resultRound = btnRock.addEventListener('click', playRound('rock', getComputerChoice()));
+    resultRound = btnPaper.addEventListener('click', playRound('paper', getComputerChoice()));
+    resultRound = btnScissors.addEventListener('click', playRound('scissors', getComputerChoice()));
+    divRoundResult.textContent = resultRound;
+    divPlayerRecord.textContent = playerRecord;
+    divComputerRecord.textContent = computerRecord;
+
+    if (playerRecord === 5){
+        divGameResult = 'YOU WIN!';
     }
-    else
-    {
-        alert('Game Done! COMPUTER WIN!');
+    else if (computerRecord === 5){
+        divGameResult === 'YOU LOSE! COMPUTER WINS!';
     }
 }
 
 
-function round(playerSelection, computerSelection)
+function playRound(playerSelection, computerSelection)
 {
     if (playerSelection === 'rock')
     {
