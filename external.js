@@ -6,6 +6,8 @@ const divRoundResult = document.querySelector('#divResult');
 const divGameResult = document.querySelector('#divGameResult');
 const divPlayerRecord = document.querySelector('#divPlayerRecord');
 const divComputerRecord = document.querySelector('#divComputerRecord');
+const displayPlayerChoice = document.querySelector('#playerChoice');
+const displayComputerChoice = document.querySelector('#computerChoice');
 
 let computerChoice = '';
 let playerRecord = 0;

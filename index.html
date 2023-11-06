@@ -5,8 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPS</title>
     <script src="./external.js"></script>
+    <link href="./style.css" rel="stylesheet">
 </head>
 <body>
-    
+    <div class="header">
+        <div class="title">Rock, Paper, Scissors</div>
+        <div class="sub-title">First to 5 Wins</div>
+    </div>
+    <div class="playground">
+        <div class="points">
+            <div class="computerScr">Computer: </div>
+            <div class="playerScr">Player: </div>
+        </div>
+        <div class="main">
+            <div class="mainComputer">
+                <img class="icon" src="./icon/computer-icon.png" alt="computer icon">
+                <div id="computerChoice"></div>
+            </div>
+            <div id="divGameResult"><b>YOU LOSE! COMPUTER WINS!</b></div>
+            <div class="mainPlayer">
+                <div id="playerChoice"></div>
+                <img class="icon" src="./icon/player-icon.png" alt="computer icon">
+            </div>
+        </div>
+        <div class="roundDeclare">
+            <div id="divResult">You Win! Paper beats Rock!</div>
+        </div>
+    </div>
+    <div class="bottom">
+
+    </div>
+    <div class="footer">
+
+    </div>
 </body>
 </html>
