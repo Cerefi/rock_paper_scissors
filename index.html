@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPS</title>
-    <script src="./external.js"></script>
+    <script src="./external.js" defer></script>
     <link href="./style.css" rel="stylesheet">
 </head>
 <body>
@@ -14,29 +14,31 @@
     </div>
     <div class="playground">
         <div class="points">
-            <div class="computerScr">Computer: </div>
-            <div class="playerScr">Player: </div>
+            <div class="computerScr">Computer: <span id="cScr"></span></div>
+            <div class="playerScr">Player: <span id="pScr"></span></div>
         </div>
         <div class="main">
             <div class="mainComputer">
                 <img class="icon" src="./icon/computer-icon.png" alt="computer icon">
-                <div id="computerChoice"></div>
+                <div id="computerChoice">---</div>
             </div>
-            <div id="divGameResult"><b>YOU LOSE! COMPUTER WINS!</b></div>
+            <div id="divGameResult"><b>YOU WIN!</b></div>
             <div class="mainPlayer">
-                <div id="playerChoice"></div>
+                <div id="playerChoice">---</div>
                 <img class="icon" src="./icon/player-icon.png" alt="computer icon">
             </div>
         </div>
         <div class="roundDeclare">
-            <div id="divResult">You Win! Paper beats Rock!</div>
+
         </div>
     </div>
     <div class="bottom">
-
+        <button id="btnRock"><img id="rock" src="./icon/rock-icon.png" alt="rock icon"></button>
+        <button id="btnPaper"><img id="paper" src="icon/paper-icon.png" alt="paper icon"></button>
+        <button id="btnScissors"><img id="scissors" src="./icon/scissors-icon.png" alt="scissors icon"></button>
     </div>
     <div class="footer">
-
+        Copyright © Fercie 2023
     </div>
 </body>
 </html>

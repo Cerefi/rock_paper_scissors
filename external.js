@@ -1,57 +1,66 @@
 const RPS = ['rock', 'paper', 'scissors'];
+const cScore = document.querySelector('#cScr');
+const pScore = document.querySelector('#pScr');
 const btnRock = document.querySelector('#btnRock');
-const btnPaper = document.querySelector('#btnPaper');
-const btnScissors = document.querySelector('#btnScissors')
-const divRoundResult = document.querySelector('#divResult');
-const divGameResult = document.querySelector('#divGameResult');
-const divPlayerRecord = document.querySelector('#divPlayerRecord');
-const divComputerRecord = document.querySelector('#divComputerRecord');
-const displayPlayerChoice = document.querySelector('#playerChoice');
-const displayComputerChoice = document.querySelector('#computerChoice');
+const btnScissors = document.querySelector('#btnScissors');
+const btnPaper = document.querySelector('#btnPaper')
+const computerChoice = document.querySelector('#computerChoice');
+const playerChoice = document.querySelector('#playerChoice');
+const gameResult = document.querySelector('#divGameResult');
 
-let computerChoice = '';
-let playerRecord = 0;
 let computerRecord = 0;
-let resultRound = '';
+let playerRecord = 0;
+cScore.textContent = computerRecord;
+pScore.textContent = playerRecord;
 
-game ();
+game();
 
-function game()
-{
+function game(){
 
-    resultRound = btnRock.addEventListener('click', playRound('rock', getComputerChoice()));
-    resultRound = btnPaper.addEventListener('click', playRound('paper', getComputerChoice()));
-    resultRound = btnScissors.addEventListener('click', playRound('scissors', getComputerChoice()));
-    divRoundResult.textContent = resultRound;
-    divPlayerRecord.textContent = playerRecord;
-    divComputerRecord.textContent = computerRecord;
+    btnRock.addEventListener('click', () => {
+        cChoice = getComputerChoice();
+        playRound('rock', cChoice);
+        updateRecords();
+        playerChoice.textContent = 'ROCK!'
+        displayComputerChoice(cChoice);
+    })
 
-    if (playerRecord === 5){
-        divGameResult = 'YOU WIN!';
-    }
-    else if (computerRecord === 5){
-        divGameResult === 'YOU LOSE! COMPUTER WINS!';
-    }
+    btnPaper.addEventListener('click', () => {
+        cChoice = getComputerChoice();
+        playRound('paper', cChoice);
+        updateRecords();
+        playerChoice.textContent = 'PAPER!'
+        displayComputerChoice(cChoice);
+    })
+
+    btnScissors.addEventListener('click', () => {
+        cChoice = getComputerChoice();
+        playRound('scissors', cChoice);
+        updateRecords();
+        playerChoice.textContent = 'SCISSORS!'
+        displayComputerChoice(cChoice);
+    })
 }
 
 
 function playRound(playerSelection, computerSelection)
 {
+
     if (playerSelection === 'rock')
     {
-        if (computerChoice === 'rock')
+        if (computerSelection === 'rock')
         {
-            return ('Draw');
+            return 0;
         }
         else if (computerSelection === 'paper')
         {
             computerRecord++;
-            return ('You Lose! Paper beats Rock');
+            return 0;
         }
         else 
         {
             playerRecord++;
-            return ('You Win! Rock beats Scissors');
+            return 0;
         }
     }
     else if (playerSelection === 'paper')
@@ -59,16 +68,16 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection === 'rock')
         {
             playerRecord++;
-            return ('You Win! Paper beats Rock');
+            return 0;
         }
         else if (computerSelection === 'paper')
         {
-            return ('Draw');
+            return 0;
         }
         else 
         {
             computerRecord++;
-            return ('You Lose! Scissors beats Paper');
+            return 0;
         }
     }
     else
@@ -76,16 +85,16 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection === 'rock')
         {
             computerRecord++;
-            return ('You Lose! Rock beats Scissors');
+            return 0;
         }
         else if (computerSelection === 'paper')
         {
             playerRecord++;
-            return ('You Win! Scissors beats Paper');
+            return 0;
         }
         else 
         {
-            return ('Draw');
+            return 0;
         }
     }
 }
@@ -93,5 +102,23 @@ function playRound(playerSelection, computerSelection)
 
 function getComputerChoice ()
 {
-    return Math.floor(Math.random() * 3);   
+    return RPS[Math.floor(Math.random() * 3)];   
+}
+
+function displayComputerChoice (choice){
+    if (choice == 'rock'){
+        computerChoice.textContent = 'ROCK!';
+    }
+    else if (choice == 'paper'){
+        computerChoice.textContent = 'PAPER!';
+    }
+    else if (choice == 'scissors')
+    {
+        computerChoice.textContent = 'SCISSORS!'
+    }
+}
+
+function updateRecords (){
+    cScore.textContent = computerRecord;
+    pScore.textContent = playerRecord;
 }
