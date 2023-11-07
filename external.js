@@ -7,15 +7,16 @@ const btnPaper = document.querySelector('#btnPaper')
 const computerChoice = document.querySelector('#computerChoice');
 const playerChoice = document.querySelector('#playerChoice');
 const gameResult = document.querySelector('#divGameResult');
-
+const result = document.querySelector('.declare');
+const playAgain = document.querySelector('.play-again');
 let computerRecord = 0;
 let playerRecord = 0;
 cScore.textContent = computerRecord;
 pScore.textContent = playerRecord;
 
-game();
+main();
 
-function game(){
+function main(){
 
     btnRock.addEventListener('click', () => {
         cChoice = getComputerChoice();
@@ -23,6 +24,7 @@ function game(){
         updateRecords();
         playerChoice.textContent = 'ROCK!'
         displayComputerChoice(cChoice);
+        checkWinner();
     })
 
     btnPaper.addEventListener('click', () => {
@@ -31,6 +33,7 @@ function game(){
         updateRecords();
         playerChoice.textContent = 'PAPER!'
         displayComputerChoice(cChoice);
+        checkWinner();
     })
 
     btnScissors.addEventListener('click', () => {
@@ -39,6 +42,7 @@ function game(){
         updateRecords();
         playerChoice.textContent = 'SCISSORS!'
         displayComputerChoice(cChoice);
+        checkWinner();
     })
 }
 
@@ -121,4 +125,16 @@ function displayComputerChoice (choice){
 function updateRecords (){
     cScore.textContent = computerRecord;
     pScore.textContent = playerRecord;
+}
+
+
+function checkWinner(){
+    if (playerRecord === 5 ){
+        result.textContent = 'YOU WIN!';
+        playAgain.removeAttribute('hidden');
+    }
+    else if (computerRecord === 5){
+        result.textContent = 'YOU LOSE!';
+        playAgain.removeAttribute('hidden');
+    }
 }
